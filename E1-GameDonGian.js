@@ -39,12 +39,12 @@ function Car(image, top, left, size, speed) {
     }
 }
 
-let car = new Car('yellowCar', 0, 0, 200, 20);
-
-function start() {
+let car = new Car('yellowCar', 0, 0, 80, 20);
+function startCar() {
     if (car.top == 0) {
         car.moveRight();
     }
+    //do car.left luôn chẵn, trong khi window.innerWidth có thể lẻ nên ta cần trừ đi phần lẻ của nó để 2 vế bằng nhau
     if (car.left == (window.innerWidth-(window.innerWidth%car.speed)-car.size/2)){
         car.moveDown();
     }
@@ -55,8 +55,7 @@ function start() {
         car.moveUp();
     }
 
-    document.getElementById('game').innerHTML = car.getCarElement();
-    setTimeout(start, 1);
+    document.getElementById('car').innerHTML = car.getCarElement();
+    setTimeout(startCar, 100);
 }
-
-start();
+startCar();
